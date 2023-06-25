@@ -1,7 +1,7 @@
 data=data=[
 {
 	"city":"kolkata",
-	"temperature":"27"
+	"temperature":"37"
 },
 {
 	"city":"mumbai",
