@@ -1,5 +1,5 @@
 import graphene
 
 class weather(graphene.ObjectType): 
-    city=graphene.String()
-    temperature=graphene.String()
+    sunrise=graphene.String()
+    sunset=graphene.String()

@@ -4,14 +4,6 @@ from schema import weather
 from data import read_data
 
 class query(graphene.ObjectType):
-    city_temp=graphene.Field(weather,city=graphene.String())
-    def resolve_city_temp(self,info,city):
-        data=read_data()
-        for row in data:
-            if row["city"]==city:
-                return row
-            
-        return {
-            "city":city,
-            "temperature":"not found in the sequence"
-        }
+    sun_time=graphene.Field(weather,lat=graphene.NonNull(graphene.Float), long = graphene.NonNull(graphene.Float))
+    def resolve_sun_time(self,info,lat,long):
+        return read_data(lat, long)
