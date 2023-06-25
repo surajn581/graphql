@@ -7,7 +7,7 @@ def get_data(lat, long):
     url     = f'https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={long}&daily=sunrise,sunset&forecast_days=1&timezone=auto'
     res = requests.get(url).json()
     print(res)
-    data = dict( sunrise = res.get('daily').get('sunrise')[0], sunset = res.get('daily').get('sunset')[0] )
+    data = dict( sunrise = res.get('daily').get('sunrise')[0], sunset = res.get('daily').get('sunset')[0], timezone = res.get('timezone') )
     return data
 
 def read_data(lat, long):
@@ -15,4 +15,4 @@ def read_data(lat, long):
         return get_data(lat, long)
     except Exception as ex:
         logging.error(ex)
-        return dict(sunrise = DEFAULT, sunset = DEFAULT)
+        return dict(sunrise = DEFAULT, sunset = DEFAULT, timezone = DEFAULT)
